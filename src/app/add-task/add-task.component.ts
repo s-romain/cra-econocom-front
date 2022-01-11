@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTaskComponent implements OnInit {
 
+  pageName = "Ajout d'une tâche";
+
   constructor() { }
 
   ngOnInit(): void {

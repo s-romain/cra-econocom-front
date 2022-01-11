@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddMadeWorkComponent implements OnInit {
 
+  pageName = "Renseigner le travail réalisé";
+
   constructor() { }
 
   ngOnInit(): void {

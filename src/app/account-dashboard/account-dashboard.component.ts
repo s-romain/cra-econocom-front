@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountDashboardComponent implements OnInit {
 
+  pageName = "Travail effectué";
+
   constructor() { }
 
   ngOnInit(): void {
