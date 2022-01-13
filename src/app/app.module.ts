@@ -8,6 +8,10 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { AddMadeWorkComponent } from './add-made-work/add-made-work.component';
 import { AccountDashboardComponent } from './account-dashboard/account-dashboard.component';
 
+import { FormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +22,9 @@ import { AccountDashboardComponent } from './account-dashboard/account-dashboard
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

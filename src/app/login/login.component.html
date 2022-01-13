@@ -1,7 +1,11 @@
 <p>{{pageName}}</p>
 
 <div>
-    <input type="text" placeholder="Identifiant">
-    <input type="text" placeholder="Mot de passe">
-    <button>Se connecter</button>
+    <input type="text" placeholder="Identifiant" #loginValue>
+    <input type="text" placeholder="Mot de passe" #passwordValue>
+    <button type="submit" (click)="getAccount(loginValue.value, passwordValue.value)">Se connecter</button>
+    <div *ngFor="let accountLogin of accountLogins">
+        <div>{{accountLogin.first_name_account}}</div>
+        <div>{{accountLogin.last_name_account}}</div>
+    </div>
 </div>
