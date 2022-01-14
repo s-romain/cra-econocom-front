@@ -16,8 +16,12 @@ export class AddTaskComponent implements OnInit {
   task = <Task>{};
   tasks: Task[] = [];
 
+  selectedParentTask: string = '';
+
   account = <Account>{};
   accounts: Account[] = [];
+
+  selectedAccountManager: string = '';
 
   constructor(private taskService : TaskService, private accountService : AccountService) { }
 
@@ -34,6 +38,26 @@ export class AddTaskComponent implements OnInit {
   getAccounts(): void {
     this.accountService.getAccounts()
     .subscribe(accounts => this.accounts = accounts);
+  }
+
+  addTask(parentTaskId: string, taskAuthor: string, durationTask: string, typeTask: string, nameTask: string, projectNameTask: string): void{
+
+    if (!taskAuthor || !durationTask || !typeTask || !nameTask || !projectNameTask) { 
+      console.log("Pas de manga name");
+      return; 
+    }
+    
+    this.task.id_parent_task = parentTaskId;
+    this.task.id_manager = taskAuthor;
+    this.task.duration_task = durationTask;
+    this.task.type_task = typeTask;
+    this.task.name_task = nameTask;
+    this.task.project_name_task = projectNameTask;
+
+    this.taskService.addTask(this.task)
+    .subscribe(task => {
+      this.tasks.push(task)
+    });
   }
 
 }

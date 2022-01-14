@@ -28,6 +28,10 @@ export class TaskService {
       );
   }
 
+  addTask(task: Task): Observable<Task> {
+    return this.http.post<Task>(this.tasktUrl, task, this.httpOptions);
+  }
+
 
   /**
    * Handle Http operation that failed.

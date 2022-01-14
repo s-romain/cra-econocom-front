@@ -1,8 +1,9 @@
 export interface Task {
-    id_manager: number;
-    id_parent_task: number;
-    name_task: String;
-    duration_task: number;
-    type_task: String;
-    project_name_task: String;
+    id_task: string;
+    id_manager: string;
+    id_parent_task: string;
+    name_task: string;
+    duration_task: string;
+    type_task: string;
+    project_name_task: string;
 }

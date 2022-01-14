@@ -1,14 +1,14 @@
 <div>
     <div>{{pageName}}</div>
-    <select name="authors" id="taskAuthor">
-        <option value="">Choisissez le créateur de la tâche</option>
-        <option *ngFor="let account of accounts">{{account.first_name_account}} {{account.last_name_account}}</option>
+    <select [(ngModel)]="selectedAccountManager">
+        <option *ngFor="let account of accounts" [value]=account.id_account>{{account.first_name_account}} {{account.last_name_account}}</option>
     </select>
-    <select name="tasks" id="taskParent">
-        <option value="">Choisissez une tâche parente</option>
-        <option *ngFor="let task of tasks">{{task.name_task}}</option>
+    <select [(ngModel)]="selectedParentTask">
+        <option *ngFor="let task of tasks" [value]=task.id_task>{{task.name_task}}</option>
     </select>
-    <input type="number" placeholder="Duré de la tâche">
-    <input type="text" placeholder="Type de tâche">
-    <button>Ajouter la tâche</button>
+    <input type="text" placeholder="Nom de la tâche" #nameValue>
+    <input type="text" placeholder="Duré de la tâche" #durationValue>
+    <input type="text" placeholder="Type de tâche" #typeTaskValue>
+    <input type="text" placeholder="Projet de la tâche" #projectNameValue>
+    <button (click)="addTask(selectedParentTask, selectedAccountManager, durationValue.value, typeTaskValue.value, nameValue.value, projectNameValue.value)">Ajouter la tâche</button>
 </div>
