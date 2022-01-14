@@ -1,4 +1,4 @@
-export interface AccountLogin {
+export interface Account {
     id_account: number;
     first_name_account: string;
     last_name_account: string;

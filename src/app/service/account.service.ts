@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { AccountLogin } from '../entity/accountLogin';
+import { Account } from '../entity/account';
 import { catchError, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class AccountService {
 
   private accountUrl = 'http://127.0.0.1:3000/accounts';  // URL to web api
 
@@ -17,11 +17,11 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  getAccountByLoginPassword(login: string, password: string): Observable<AccountLogin[]> {
-    return this.http.get<AccountLogin[]>(this.accountUrl + '?login_account=eq.' + login + "&&password_account=eq." + password, this.httpOptions)
+  getAccountByLoginPassword(login: string, password: string): Observable<Account[]> {
+    return this.http.get<Account[]>(this.accountUrl + '?login_account=eq.' + login + "&&password_account=eq." + password, this.httpOptions)
       .pipe(
         tap(_ => console.log('fetched accounts')),
-        catchError(this.handleError<AccountLogin[]>('getAccounts', []))
+        catchError(this.handleError<Account[]>('getAccounts', []))
       );
   }
 
@@ -44,5 +44,4 @@ export class LoginService {
       return of(result as T);
     };
   }
-
 }

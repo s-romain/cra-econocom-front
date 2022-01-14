@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountLogin } from '../entity/accountLogin';
-import { LoginService } from '../service/login.service';
+import { Account } from '../entity/account';
+import { AccountService } from '../service/account.service';
 
 @Component({
   selector: 'app-login',
@@ -11,17 +11,17 @@ export class LoginComponent implements OnInit {
 
   pageName = "Page d'identification";
 
-  accountLogin = <AccountLogin>{};
-  accountLogins: AccountLogin[] = [];
+  account = <Account>{};
+  accounts: Account[] = [];
 
-  constructor(private loginService : LoginService) { }
+  constructor(private accountService : AccountService) { }
 
   ngOnInit(): void {
   }
 
   getAccount(loginValue: string, passwordValue: string): void {
-    this.loginService.getAccountByLoginPassword(loginValue, passwordValue)
-    .subscribe(accountLogins => this.accountLogins = accountLogins);
+    this.accountService.getAccountByLoginPassword(loginValue, passwordValue)
+    .subscribe(accounts => this.accounts = accounts);
   }
 
 }
