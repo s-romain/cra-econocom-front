@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from '../entity/task';
+import { TaskService } from '../service/task.service';
 
 @Component({
   selector: 'app-add-task',
@@ -9,9 +11,18 @@ export class AddTaskComponent implements OnInit {
 
   pageName = "Ajout d'une tâche";
 
-  constructor() { }
+  task = <Task>{};
+  tasks: Task[] = [];
+
+  constructor(private taskService : TaskService) { }
 
   ngOnInit(): void {
+    this.getTasks();
+  }
+
+  getTasks(): void {
+    this.taskService.getTasks()
+    .subscribe(tasks => this.tasks = tasks);
   }
 
 }
