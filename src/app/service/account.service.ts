@@ -17,6 +17,14 @@ export class AccountService {
 
   constructor(private http: HttpClient) { }
 
+  getAccounts(): Observable<Account[]> {
+    return this.http.get<Account[]>(this.accountUrl, this.httpOptions)
+      .pipe(
+        tap(_ => console.log('fetched accounts')),
+        catchError(this.handleError<Account[]>('getAccounts', []))
+      );
+  }
+
   getAccountByLoginPassword(login: string, password: string): Observable<Account[]> {
     return this.http.get<Account[]>(this.accountUrl + '?login_account=eq.' + login + "&&password_account=eq." + password, this.httpOptions)
       .pipe(

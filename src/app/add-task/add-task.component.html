@@ -2,12 +2,13 @@
     <div>{{pageName}}</div>
     <select name="authors" id="taskAuthor">
         <option value="">Choisissez le créateur de la tâche</option>
+        <option *ngFor="let account of accounts">{{account.first_name_account}} {{account.last_name_account}}</option>
     </select>
     <select name="tasks" id="taskParent">
         <option value="">Choisissez une tâche parente</option>
         <option *ngFor="let task of tasks">{{task.name_task}}</option>
     </select>
-    <input type="text" placeholder="Duré de la tâche">
+    <input type="number" placeholder="Duré de la tâche">
     <input type="text" placeholder="Type de tâche">
     <button>Ajouter la tâche</button>
 </div>

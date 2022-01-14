@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../entity/task';
+import { Account } from '../entity/account';
 import { TaskService } from '../service/task.service';
+import { AccountService } from '../service/account.service';
 
 @Component({
   selector: 'app-add-task',
@@ -14,15 +16,24 @@ export class AddTaskComponent implements OnInit {
   task = <Task>{};
   tasks: Task[] = [];
 
-  constructor(private taskService : TaskService) { }
+  account = <Account>{};
+  accounts: Account[] = [];
+
+  constructor(private taskService : TaskService, private accountService : AccountService) { }
 
   ngOnInit(): void {
     this.getTasks();
+    this.getAccounts();
   }
 
   getTasks(): void {
     this.taskService.getTasks()
     .subscribe(tasks => this.tasks = tasks);
+  }
+
+  getAccounts(): void {
+    this.accountService.getAccounts()
+    .subscribe(accounts => this.accounts = accounts);
   }
 
 }
