@@ -1,7 +1,15 @@
 <div>
     <div>{{pageName}}</div>
-    <input type="text" placeholder="Nom du créateur de la tâche">
-    <input type="text" placeholder="Nom de la tâche parente">
+    <select name="authors" id="taskAuthor">
+        <option value="">Choisissez le créateur de la tâche</option>
+        <option value="lolo">Aloïs</option>
+        <option value="alex">Alexiane</option>
+    </select>
+    <select name="authors" id="taskAuthor">
+        <option value="">Choisissez une tâche parente</option>
+        <option value="lolo">CRUD</option>
+        <option value="alex">Interface</option>
+    </select>
     <input type="text" placeholder="Duré de la tâche">
     <input type="text" placeholder="Type de tâche">
     <button>Ajouter la tâche</button>
