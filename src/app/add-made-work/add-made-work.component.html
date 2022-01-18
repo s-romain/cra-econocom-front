@@ -1,7 +1,9 @@
 <div>
     <div>{{pageName}}</div>
-    <input type="text" placeholder="Nom de la tache">
-    <input type="text" placeholder="Temps passé dessus">
-    <input type="text" placeholder="Date">
-    <button>Valider</button>
+    <select [(ngModel)]="selectedTask">
+        <option *ngFor="let task of tasks" [value]=task.id_task>{{task.name_task}}</option>
+    </select>
+    <input type="text" placeholder="Temps passé dessus" #durationValue>
+    <input type="text" placeholder="Date" #dateValue>
+    <button (click)="addMadeWork(selectedTask, durationValue.value, dateValue.value)">Valider</button>
 </div>
