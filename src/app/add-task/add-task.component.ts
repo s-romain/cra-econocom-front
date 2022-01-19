@@ -46,6 +46,8 @@ export class AddTaskComponent implements OnInit {
       console.log("Pas de manga name");
       return; 
     }
+
+    console.log("taskAuthor: " + taskAuthor);
     
     this.task.id_parent_task = parentTaskId;
     this.task.id_manager = taskAuthor;

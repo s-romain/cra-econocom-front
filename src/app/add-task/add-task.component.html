@@ -1,11 +1,21 @@
 <div>
     <div>{{pageName}}</div>
-    <select [(ngModel)]="selectedAccountManager">
-        <option *ngFor="let account of accounts" [value]=account.id_account>{{account.first_name_account}} {{account.last_name_account}}</option>
-    </select>
-    <select [(ngModel)]="selectedParentTask">
-        <option *ngFor="let task of tasks" [value]=task.id_task>{{task.name_task}}</option>
-    </select>
+    <mat-form-field appearance="fill">
+        <mat-label>Manager de la tâche</mat-label>
+        <mat-select [(ngModel)]="selectedAccountManager">
+          <mat-option *ngFor="let account of accounts" [value]=account.id_account>
+            {{account.first_name_account}} {{account.last_name_account}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>Tâche parente:</mat-label>
+        <mat-select [(ngModel)]="selectedParentTask">
+          <mat-option *ngFor="let task of tasks" [value]=task.id_task>
+            {{task.name_task}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field><br>
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Nom de la tâche:</mat-label>
         <input matInput placeholder="Ex: Ajout d'une entité" #nameValue>
@@ -22,5 +32,5 @@
         <mat-label>Projet de la tâche:</mat-label>
         <input matInput placeholder="Projet CRA" #projectNameValue>
     </mat-form-field><br>
-    <button (click)="addTask(selectedParentTask, selectedAccountManager, durationValue.value, typeTaskValue.value, nameValue.value, projectNameValue.value)">Ajouter la tâche</button>
+    <button (click)="addTask(selectedParentTask, selectedAccountManager, durationValue.value, typeTaskValue.value, nameValue.value, projectNameValue.value)" mat-button>Ajouter la tâche</button>
 </div>

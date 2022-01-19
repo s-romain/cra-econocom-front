@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {MadeWork} from '../entity/madeWork';
+import {MadeWorkByAccount} from '../entity/madeWorkByAccount';
 import {catchError,Observable,of ,tap} from 'rxjs';
 
 @Injectable({
@@ -10,6 +11,7 @@ import {catchError,Observable,of ,tap} from 'rxjs';
 export class MadeWorkService {
 
   private madeWorkUrl = 'http://127.0.0.1:3000/made_works'; // URL to web api
+  private madeWorByAccountkUrl = 'http://127.0.0.1:3000/rpc/made_work_by_account';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -22,6 +24,10 @@ export class MadeWorkService {
 
   addMadeWork(madeWork: MadeWork): Observable<MadeWork> {
     return this.http.post<MadeWork>(this.madeWorkUrl, madeWork, this.httpOptions);
+  }
+
+  getMadeWorkByAccount(idAccount: Object): Observable<MadeWorkByAccount> {
+    return this.http.post<MadeWorkByAccount>(this.madeWorByAccountkUrl, idAccount, this.httpOptions);
   }
 
   /**

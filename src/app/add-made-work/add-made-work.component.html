@@ -1,9 +1,20 @@
 <div>
     <div>{{pageName}}</div>
-    <select [(ngModel)]="selectedTask">
-        <option *ngFor="let task of tasks" [value]=task.id_task>{{task.name_task}}</option>
-    </select>
-    <input type="text" placeholder="Temps passé dessus" #durationValue>
-    <input type="text" placeholder="Date" #dateValue>
-    <button (click)="addMadeWork(selectedTask, durationValue.value, dateValue.value)">Valider</button>
+    <mat-form-field appearance="fill">
+        <mat-label>Liste des tâches</mat-label>
+        <mat-select [(ngModel)]="selectedTask">
+          <mat-option *ngFor="let task of tasks" [value]=task.id_task>
+            {{task.name_task}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Temps passé dessus</mat-label>
+        <input matInput placeholder="Ex: 1" #durationValue>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Date du travail</mat-label>
+        <input matInput placeholder="Ex: 2" #dateValue>
+    </mat-form-field><br>
+    <button (click)="addMadeWork(selectedTask, durationValue.value, dateValue.value)" mat-button>Valider</button>
 </div>

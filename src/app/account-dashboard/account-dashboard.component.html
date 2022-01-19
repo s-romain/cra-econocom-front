@@ -8,23 +8,10 @@
                 <td>Temps estimé</td>
                 <td>Jours de travail</td>
             </tr>
-            <tr>
-                <td>CRUD base de données</td>
-                <td>3</td>
-                <td>2</td>
-                <td>21/12/2021</td>
-            </tr>
-            <tr>
-                <td>CRUD base de données</td>
-                <td>3</td>
-                <td>2</td>
-                <td>21/12/2021</td>
-            </tr>
-            <tr>
-                <td>CRUD base de données</td>
-                <td>3</td>
-                <td>2</td>
-                <td>21/12/2021</td>
+            <tr *ngFor="let madeWorkByAccount of madeWorkByAccounts">
+                <td>{{madeWorkByAccount.name_task}}</td>
+                <td>{{madeWorkByAccount.duration_made_work}}</td>
+                <td>{{madeWorkByAccount.date_of_work_made_work}}</td>
             </tr>
          </table>
     </div>

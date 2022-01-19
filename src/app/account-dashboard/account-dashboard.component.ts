@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MadeWorkByAccount } from '../entity/madeWorkByAccount';
+import { MadeWorkService } from '../service/made-work.service';
+
 
 @Component({
   selector: 'app-account-dashboard',
@@ -9,9 +12,21 @@ export class AccountDashboardComponent implements OnInit {
 
   pageName = "Travail effectué";
 
-  constructor() { }
+  madeWorkByAccount = <MadeWorkByAccount>{};
+  madeWorkByAccounts: MadeWorkByAccount[] = [];
+
+  constructor(private madeWorkService : MadeWorkService) { }
 
   ngOnInit(): void {
+    this.getMadeWorkByAccount();
+    console.log(this.madeWorkByAccounts);
+  }
+
+  getMadeWorkByAccount(): void {
+    this.madeWorkService.getMadeWorkByAccount({"idaccount": 1})
+    .subscribe(madeWorkByAccounts => {
+      this.madeWorkByAccounts.push(madeWorkByAccounts)
+    });
   }
 
 }
