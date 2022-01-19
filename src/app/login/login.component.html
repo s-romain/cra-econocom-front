@@ -1,9 +1,15 @@
 <p>{{pageName}}</p>
 
 <div>
-    <input type="text" placeholder="Identifiant" #loginValue>
-    <input type="text" placeholder="Mot de passe" #passwordValue>
-    <button type="submit" (click)="getAccount(loginValue.value, passwordValue.value)">Se connecter</button>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Entrez votre identifiant:</mat-label>
+        <input matInput placeholder="Ex. ahias" #loginValue>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Entrez votre mot de passe:</mat-label>
+        <input matInput placeholder="Ex. ahias" #passwordValue>
+    </mat-form-field><br>
+    <button type="submit" (click)="getAccount(loginValue.value, passwordValue.value)" mat-button>Se connecter</button>
     <div *ngFor="let account of accounts">
         <div>{{account.first_name_account}}</div>
         <div>{{account.last_name_account}}</div>

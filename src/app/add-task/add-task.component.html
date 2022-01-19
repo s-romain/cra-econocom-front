@@ -6,9 +6,21 @@
     <select [(ngModel)]="selectedParentTask">
         <option *ngFor="let task of tasks" [value]=task.id_task>{{task.name_task}}</option>
     </select>
-    <input type="text" placeholder="Nom de la tâche" #nameValue>
-    <input type="text" placeholder="Duré de la tâche" #durationValue>
-    <input type="text" placeholder="Type de tâche" #typeTaskValue>
-    <input type="text" placeholder="Projet de la tâche" #projectNameValue>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Nom de la tâche:</mat-label>
+        <input matInput placeholder="Ex: Ajout d'une entité" #nameValue>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Duré de la tâche:</mat-label>
+        <input matInput placeholder="Ex: 2" #durationValue>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Type de tâche:</mat-label>
+        <input matInput placeholder="Ex: US ou FEAT" #typeTaskValue>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Projet de la tâche:</mat-label>
+        <input matInput placeholder="Projet CRA" #projectNameValue>
+    </mat-form-field><br>
     <button (click)="addTask(selectedParentTask, selectedAccountManager, durationValue.value, typeTaskValue.value, nameValue.value, projectNameValue.value)">Ajouter la tâche</button>
 </div>

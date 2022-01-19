@@ -11,6 +11,10 @@ import { AccountDashboardComponent } from './account-dashboard/account-dashboard
 import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -21,10 +25,13 @@ import { HttpClientModule } from '@angular/common/http';
     AccountDashboardComponent
   ],
   imports: [
+    MatInputModule,
+    MatButtonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
