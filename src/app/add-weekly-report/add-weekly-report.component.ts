@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import { Task } from '../entity/task';
+import { TaskService } from '../service/task.service';
 
 interface TaskState{
   value: string;
@@ -17,16 +14,21 @@ interface TaskState{
 })
 export class AddWeeklyReportComponent implements OnInit {
 
-  constructor() { }
+  task = <Task>{};
+  tasks: Task[] = [];
+
+  selectedTask: string = '';
+
+  constructor(private taskService : TaskService) { }
 
   ngOnInit(): void {
+    this.getTasks();
   }
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+  getTasks(): void {
+    this.taskService.getTasks()
+    .subscribe(tasks => this.tasks = tasks);
+  }
 
   taskStates: TaskState[] = [
     {value: 'inProgress-0', viewValue: 'En cours'},

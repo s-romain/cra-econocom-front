@@ -1,8 +1,8 @@
 <mat-form-field appearance="fill">
     <mat-label>Nom de la tâche</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
+    <mat-select [(ngModel)]="selectedTask">
+      <mat-option *ngFor="let task of tasks" [value]="task.id_task">
+        {{task.name_task}}
       </mat-option>
     </mat-select>
 </mat-form-field><br>
