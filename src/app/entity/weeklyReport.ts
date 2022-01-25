@@ -4,4 +4,4 @@ export interface WeeklyReport {
     id_task: string;
     duration_weekly_report: string;
     state_weekly_report: string;
-  }
+}

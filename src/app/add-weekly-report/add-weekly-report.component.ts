@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../entity/task';
+import { WeeklyReport } from '../entity/weeklyReport';
+
 import { TaskService } from '../service/task.service';
+import { WeeklyReportService } from '../service/weekly-report.service';
 
 interface TaskState{
   value: string;
@@ -19,7 +22,10 @@ export class AddWeeklyReportComponent implements OnInit {
 
   selectedTask: string = '';
 
-  constructor(private taskService : TaskService) { }
+  weeklyReport = <WeeklyReport>{};
+  weeklyReports: WeeklyReport[] = [];
+
+  constructor(private taskService : TaskService, private weeklyReportService : WeeklyReportService) { }
 
   ngOnInit(): void {
     this.getTasks();
@@ -28,6 +34,23 @@ export class AddWeeklyReportComponent implements OnInit {
   getTasks(): void {
     this.taskService.getTasks()
     .subscribe(tasks => this.tasks = tasks);
+  }
+
+  addWeeklyReport(id_task: string, duration_weekly_report: string, state_weekly_report: string): void{
+
+    if (!id_task || !duration_weekly_report || !state_weekly_report) { 
+      return; 
+    }
+    
+    this.weeklyReport.id_task = id_task;
+    this.weeklyReport.duration_weekly_report = duration_weekly_report;
+    this.weeklyReport.state_weekly_report = state_weekly_report;
+
+    this.weeklyReportService.addWeeklyReport(this.weeklyReport)
+    .subscribe(weeklyReport => {
+      this.weeklyReports.push(this.weeklyReport)
+    });
+    
   }
 
   taskStates: TaskState[] = [
