@@ -1,1 +1,24 @@
-<p>add-weekly-report works!</p>
+<mat-form-field appearance="fill">
+    <mat-label>Nom de la tâche</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+</mat-form-field><br>
+
+<mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Temps passé sur la tâche</mat-label>
+    <input type="number" matInput placeholder="Ex. Pizza" value="Sushi">
+</mat-form-field><br>
+
+<mat-form-field appearance="fill">
+    <mat-label>Etat de la tâche</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let taskState of taskStates" [value]="taskState.value">
+        {{taskState.viewValue}}
+      </mat-option>
+    </mat-select>
+</mat-form-field><br>
+
+<button mat-button>Valider</button>
