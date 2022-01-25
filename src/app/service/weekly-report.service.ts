@@ -3,13 +3,14 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {WeeklyReport} from '../entity/weeklyReport';
 import {catchError,Observable,of ,tap} from 'rxjs';
+import { HIGH_CONTRAST_MODE_ACTIVE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeeklyReportService {
 
-  private weeklyReportUrl = 'http://127.0.0.1:3000/weekly-reports'; // URL to web api
+  private weeklyReportUrl = 'http://localhost:3000/weekly_reports'; // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({

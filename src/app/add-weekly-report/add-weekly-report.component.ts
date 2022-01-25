@@ -25,6 +25,8 @@ export class AddWeeklyReportComponent implements OnInit {
   weeklyReport = <WeeklyReport>{};
   weeklyReports: WeeklyReport[] = [];
 
+  selectedState: string = '';
+
   constructor(private taskService : TaskService, private weeklyReportService : WeeklyReportService) { }
 
   ngOnInit(): void {
@@ -50,7 +52,7 @@ export class AddWeeklyReportComponent implements OnInit {
     .subscribe(weeklyReport => {
       this.weeklyReports.push(this.weeklyReport)
     });
-    
+
   }
 
   taskStates: TaskState[] = [
