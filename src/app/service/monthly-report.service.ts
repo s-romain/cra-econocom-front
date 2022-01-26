@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {WeeklyReport} from '../entity/weeklyReport';
+import {MonthlyReport} from '../entity/monthlyReport';
 import {Observable,of ,tap} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WeeklyReportService {
+export class MonthlyReportService {
 
-  private weeklyReportUrl = 'http://localhost:3000/weekly_reports'; // URL to web api
+  private monthlyReportUrl = 'http://localhost:3000/monthly_reports'; // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -20,8 +20,8 @@ export class WeeklyReportService {
 
   constructor(private http: HttpClient) { }
 
-  addWeeklyReport(weeklyReport: WeeklyReport): Observable<WeeklyReport> {
-    return this.http.post<WeeklyReport>(this.weeklyReportUrl, weeklyReport, this.httpOptions);
+  addMonthlyReport(monthlyReport: MonthlyReport): Observable<MonthlyReport> {
+    return this.http.post<MonthlyReport>(this.monthlyReportUrl, monthlyReport, this.httpOptions);
   }
 
   /**
@@ -30,7 +30,7 @@ export class WeeklyReportService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError < T > (operation = 'operation', result ? : T) {
+   private handleError < T > (operation = 'operation', result ? : T) {
     return (error: any): Observable < T > => {
 
       // TODO: send the error to remote logging infrastructure
