@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ProjectInformation } from '../entity/projectInformation';
+import { MonthlyReport } from '../entity/monthlyReport';
 
 import { ProjectInformationService } from '../service/project-information.service';
+
+import { MonthlyReportService } from '../service/monthly-report.service';
 
 @Component({
   selector: 'app-add-monthly-report',
@@ -13,9 +17,12 @@ export class AddMonthlyReportComponent implements OnInit {
   projectInformation = <ProjectInformation>{};
   projectInformations: ProjectInformation[] = [];
 
+  monthlyReport = <MonthlyReport>{};
+  monthlyReports: MonthlyReport[] = [];
+
   selectedProject: string = '';
 
-  constructor(private projectInformationService : ProjectInformationService) { }
+  constructor(private projectInformationService : ProjectInformationService, private monthlyReportService : MonthlyReportService) { }
 
   ngOnInit(): void {
     this.getProjectInformations();
@@ -24,6 +31,23 @@ export class AddMonthlyReportComponent implements OnInit {
   getProjectInformations(): void {
     this.projectInformationService.getProjectInformations()
     .subscribe(projectInformations => this.projectInformations = projectInformations)
+  }
+
+  addMonthlyReport(projectSelected: string): void{
+
+    if (!projectSelected) { 
+      return; 
+    }
+    
+    this.monthlyReport.id_account = '1';
+    this.monthlyReport.id_project = projectSelected;
+    this.monthlyReport.date_monthly_reports = new Date().toString();
+
+    this.monthlyReportService.addMonthlyReport(this.monthlyReport)
+    .subscribe(monthlyReport => {
+      this.monthlyReports.push(this.monthlyReport)
+    });
+
   }
 
 }
