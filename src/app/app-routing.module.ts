@@ -5,6 +5,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { AddMadeWorkComponent } from './add-made-work/add-made-work.component';
 import { AccountDashboardComponent } from './account-dashboard/account-dashboard.component';
 import { AddWeeklyReportComponent } from './add-weekly-report/add-weekly-report.component';
+import { AddMonthlyReportComponent } from './add-monthly-report/add-monthly-report.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -12,7 +13,7 @@ const routes: Routes = [
   { path: 'addTask', component: AddTaskComponent },
   { path: 'addMadeWork', component: AddMadeWorkComponent },
   { path: 'accountDashboard', component: AccountDashboardComponent },
-  { path: 'addWeeklyReport', component: AddWeeklyReportComponent }
+  { path: 'addMonthlyReportComponent', component: AddMonthlyReportComponent }
 ];
 
 @NgModule({
