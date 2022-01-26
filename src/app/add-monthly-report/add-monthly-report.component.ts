@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectInformation } from '../entity/projectInformation';
+
+import { ProjectInformationService } from '../service/project-information.service';
 
 @Component({
   selector: 'app-add-monthly-report',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddMonthlyReportComponent implements OnInit {
 
-  constructor() { }
+  projectInformation = <ProjectInformation>{};
+  projectInformations: ProjectInformation[] = [];
+
+  selectedProject: string = '';
+
+  constructor(private projectInformationService : ProjectInformationService) { }
 
   ngOnInit(): void {
+    this.getProjectInformations();
+  }
+
+  getProjectInformations(): void {
+    this.projectInformationService.getProjectInformations()
+    .subscribe(projectInformations => this.projectInformations = projectInformations)
   }
 
 }

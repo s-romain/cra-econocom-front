@@ -1,1 +1,10 @@
-<p>add-monthly-report works!</p>
+<mat-form-field appearance="fill">
+    <mat-label>Liste des projets</mat-label>
+    <mat-select [(ngModel)]="selectedProject">
+      <mat-option *ngFor="let projectInformation of projectInformations" [value]="projectInformation.id_project">
+        {{projectInformation.name_project}}
+      </mat-option>
+    </mat-select>
+</mat-form-field><br>
+
+<button mat-button>Valider</button>
