@@ -38,10 +38,10 @@ export class AddMonthlyReportComponent implements OnInit {
     if (!projectSelected) { 
       return; 
     }
-    
+        
     this.monthlyReport.id_account = '1';
     this.monthlyReport.id_project = projectSelected;
-    this.monthlyReport.date_monthly_reports = new Date().toString();
+    this.monthlyReport.date_monthly_reports = new Date();
 
     this.monthlyReportService.addMonthlyReport(this.monthlyReport)
     .subscribe(monthlyReport => {
