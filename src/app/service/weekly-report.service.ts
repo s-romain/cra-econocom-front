@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {WeeklyReport} from '../entity/weeklyReport';
+import {WeeklyReportByAccount} from '../entity/weeklyReportByAccount';
 import {Observable,of ,tap} from 'rxjs';
 
 @Injectable({
@@ -9,7 +10,7 @@ import {Observable,of ,tap} from 'rxjs';
 })
 export class WeeklyReportService {
 
-  private weeklyReportUrl = 'http://localhost:3000/weekly_reports'; // URL to web api
+  private weeklyReportUrl = 'http://localhost:3000'; // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -21,7 +22,14 @@ export class WeeklyReportService {
   constructor(private http: HttpClient) { }
 
   addWeeklyReport(weeklyReport: WeeklyReport): Observable<WeeklyReport> {
-    return this.http.post<WeeklyReport>(this.weeklyReportUrl, weeklyReport, this.httpOptions);
+    return this.http.post<WeeklyReport>(this.weeklyReportUrl + '/weekly_reports', weeklyReport, this.httpOptions);
+  }
+
+  getWeeklyReportByAccount(idAccount: number): Observable<WeeklyReportByAccount[]> {
+    const jsonBody = {
+      "id_account_entry": idAccount
+    };
+    return this.http.post<WeeklyReportByAccount[]>(this.weeklyReportUrl + '/rpc/weekly_report_by_account', jsonBody, this.httpOptions);
   }
 
   /**

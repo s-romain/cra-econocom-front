@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>Nom de la tâche</th>
+            <th>Durée de la tâche</th>
+            <th>Date de la tâche</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let weeklyReportByAccount of weeklyReportByAccounts">
+            <td>{{weeklyReportByAccount.name_task}}</td>
+            <td>{{weeklyReportByAccount.duration_weekly_report}}</td>
+            <td>{{weeklyReportByAccount.date_weekly_reports}}</td>
+        </tr>
+    </tbody>
+</table>
