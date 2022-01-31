@@ -19,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { WeeklyReportComponent } from './weekly-report/weekly-report.component';
+import { MonthlyReportComponent } from './monthly-report/monthly-report.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { WeeklyReportComponent } from './weekly-report/weekly-report.component';
     AccountDashboardComponent,
     AddWeeklyReportComponent,
     AddMonthlyReportComponent,
-    WeeklyReportComponent
+    WeeklyReportComponent,
+    MonthlyReportComponent
   ],
   imports: [
     MatSelectModule,
