@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {MonthlyReport} from '../entity/monthlyReport';
+import {MonthlyReportByAccount} from '../entity/monthlyReportByAccount';
 import {Observable,of ,tap} from 'rxjs';
 
 @Injectable({
@@ -9,7 +10,7 @@ import {Observable,of ,tap} from 'rxjs';
 })
 export class MonthlyReportService {
 
-  private monthlyReportUrl = 'http://localhost:3000/monthly_reports'; // URL to web api
+  private monthlyReportUrl = 'http://localhost:3000'; // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -21,7 +22,14 @@ export class MonthlyReportService {
   constructor(private http: HttpClient) { }
 
   addMonthlyReport(monthlyReport: MonthlyReport): Observable<MonthlyReport> {
-    return this.http.post<MonthlyReport>(this.monthlyReportUrl, monthlyReport, this.httpOptions);
+    return this.http.post<MonthlyReport>(this.monthlyReportUrl + '/monthly_reports', monthlyReport, this.httpOptions);
+  }
+
+  getMonthlyReportByAccount(idAccount: number): Observable<MonthlyReportByAccount[]> {
+    const jsonBody = {
+      "id_account_entry": idAccount
+    };
+    return this.http.post<MonthlyReportByAccount[]>(this.monthlyReportUrl + '/rpc/monthly_report_by_account', jsonBody, this.httpOptions);
   }
 
   /**
