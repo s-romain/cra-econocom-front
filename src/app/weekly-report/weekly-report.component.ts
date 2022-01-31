@@ -16,11 +16,11 @@ export class WeeklyReportComponent implements OnInit {
   constructor(private weeklyReportService : WeeklyReportService) { }
 
   ngOnInit(): void {
-    this.getWeeklyReportByAccount();
+    this.getWeeklyReportByAccount(1);
   }
 
-  getWeeklyReportByAccount(): void{
-    this.weeklyReportService.getWeeklyReportByAccount(1)
+  getWeeklyReportByAccount(idAccount: number): void{
+    this.weeklyReportService.getWeeklyReportByAccount(idAccount)
     .subscribe(weeklyReportByAccounts => this.weeklyReportByAccounts = weeklyReportByAccounts);
   }
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MonthlyReportByAccount } from '../entity/monthlyReportByAccount';
+import { MonthlyReportService } from '../service/monthly-report.service';
 
 @Component({
   selector: 'app-monthly-report',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MonthlyReportComponent implements OnInit {
 
-  constructor() { }
+  monthlyReportByAccount = <MonthlyReportByAccount>{};
+  monthlyReportByAccounts: MonthlyReportByAccount[] = [];
+
+  constructor(private monthlyReportService : MonthlyReportService) { }
 
   ngOnInit(): void {
+    this.getMonthlyReportByAccount(1);
+  }
+
+  getMonthlyReportByAccount(idAccount: number): void{
+    this.monthlyReportService.getMonthlyReportByAccount(idAccount)
+    .subscribe(monthlyReportByAccounts => this.monthlyReportByAccounts = monthlyReportByAccounts);
   }
 
 }

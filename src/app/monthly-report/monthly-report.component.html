@@ -1,1 +1,14 @@
-<p>monthly-report works!</p>
+<table>
+    <thead>
+        <tr>
+            <th>Nom du projet</th>
+            <th>Jour de travail</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let monthlyReportByAccount of monthlyReportByAccounts">
+            <td>{{monthlyReportByAccount.name_project}}</td>
+            <td>{{monthlyReportByAccount.date_monthly_reports}}</td>
+        </tr>
+    </tbody>
+</table>

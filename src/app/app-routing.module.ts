@@ -5,6 +5,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { AddMonthlyReportComponent } from './add-monthly-report/add-monthly-report.component';
 import { AddWeeklyReportComponent } from './add-weekly-report/add-weekly-report.component';
 import { WeeklyReportComponent } from './weekly-report/weekly-report.component';
+import { MonthlyReportComponent } from './monthly-report/monthly-report.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'addTask', component: AddTaskComponent },
   { path: 'addMonthlyReport', component: AddMonthlyReportComponent },
   { path: 'addWeeklyReport', component: AddWeeklyReportComponent },
-  { path: 'weeklyReport', component: WeeklyReportComponent }
+  { path: 'weeklyReport', component: WeeklyReportComponent },
+  { path: 'monthlyReport', component: MonthlyReportComponent }
 
 ];
 
