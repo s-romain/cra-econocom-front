@@ -1,16 +1,21 @@
-<table>
-    <thead>
-        <tr>
-            <th>Nom de la tâche</th>
-            <th>Durée de la tâche</th>
-            <th>Date de la tâche</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let weeklyReportByAccount of weeklyReportByAccounts">
-            <td>{{weeklyReportByAccount.name_task}}</td>
-            <td>{{weeklyReportByAccount.duration_weekly_report}}</td>
-            <td>{{weeklyReportByAccount.date_weekly_reports}}</td>
-        </tr>
-    </tbody>
+<table mat-table [dataSource]="weeklyReportByAccounts" class="mat-elevation-z8">
+      
+    <ng-container matColumnDef="name_task">
+      <th mat-header-cell *matHeaderCellDef> Nom de la tâche </th>
+      <td mat-cell *matCellDef="let weeklyReportByAccount"> {{weeklyReportByAccount.name_task}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="duration_weekly_report">
+      <th mat-header-cell *matHeaderCellDef> Durée de la tâche </th>
+      <td mat-cell *matCellDef="let weeklyReportByAccount"> {{weeklyReportByAccount.duration_weekly_report}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date_weekly_reports">
+        <th mat-header-cell *matHeaderCellDef> Date de la tâche </th>
+        <td mat-cell *matCellDef="let weeklyReportByAccount"> {{weeklyReportByAccount.date_weekly_reports}} </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
 </table>

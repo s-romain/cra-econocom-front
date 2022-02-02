@@ -2,12 +2,12 @@
       
     <ng-container matColumnDef="name_project">
       <th mat-header-cell *matHeaderCellDef> Nom du projet </th>
-      <td mat-cell *matCellDef="let element"> {{element.name_project}} </td>
+      <td mat-cell *matCellDef="let monthlyReportByAccount"> {{monthlyReportByAccount.name_project}} </td>
     </ng-container>
   
     <ng-container matColumnDef="date_monthly_reports">
       <th mat-header-cell *matHeaderCellDef> Jour de travail </th>
-      <td mat-cell *matCellDef="let element"> {{element.date_monthly_reports}} </td>
+      <td mat-cell *matCellDef="let monthlyReportByAccount"> {{monthlyReportByAccount.date_monthly_reports}} </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

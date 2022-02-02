@@ -13,6 +13,8 @@ export class WeeklyReportComponent implements OnInit {
   weeklyReportByAccount = <WeeklyReportByAccount>{};
   weeklyReportByAccounts: WeeklyReportByAccount[] = [];
 
+  displayedColumns: string[] = ['name_task', 'duration_weekly_report', 'date_weekly_reports'];
+
   constructor(private weeklyReportService : WeeklyReportService) { }
 
   ngOnInit(): void {
