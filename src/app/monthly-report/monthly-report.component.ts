@@ -12,6 +12,8 @@ export class MonthlyReportComponent implements OnInit {
   monthlyReportByAccount = <MonthlyReportByAccount>{};
   monthlyReportByAccounts: MonthlyReportByAccount[] = [];
 
+  displayedColumns: string[] = ['name_project', 'date_monthly_reports'];
+
   constructor(private monthlyReportService : MonthlyReportService) { }
 
   ngOnInit(): void {
